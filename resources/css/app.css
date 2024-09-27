@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+table, tr, th {
+    border: 1px solid black;
+}
+
+table{
+    margin-left: 10%;
+    width: 80%;
+}
+
+.show-button{
+    color: white;
+    background-color: rgb(121, 78, 0);
+}
+.edit-button{
+    color: white;
+    background-color: rgb(2, 55, 80);
+}
+.delete-button{
+    color: white;
+    background-color: rgb(133, 0, 0);
+}
+
+.barraBusqueda{
+    margin-top: 30px;
+    width: 70%;
+    margin-left: 15%;
+}
+
+.titulo{
+    text-align: center;
+    font-weight: bolder;
+    font-size: 30px;
+}
+
+.agregarBoton{
+    height: 40px;
+    width: 300px;
+    color: white;
+    background-color: rgb(6, 156, 6);
+    border: 1px solid black;
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    margin-left: 5px;
+}
+
+.agregarForm{
+    margin-top: 25px;
+    border: 1px solid black;
+    width: 50%;
+    height: 80vh;
+    margin-left: 25%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 25px;
+}
+
+label{
+    margin-top: 25px;
+}
+
+.titulo{
+    text-align: center;
+}
+
+.cancel{
+    background-color: rgb(224, 15, 15);
+    border: 1px solid black;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 40px;
+    font-size: larger;
+    margin-top: 25px;
+}
+.submit{
+    background-color: rgb(10, 209, 36);
+    border: 1px solid black;
+    color: white;
+    width: 150px;
+    height: 40px;
+    font-size: larger;
+}
+
+.devolver{
+    background-color: rgb(1, 170, 1);
+    color: white;
+}
+
+@keyframes slideInUp {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+#toast-message{
+    width: 50%;
+    margin-left: 25%;
+}
+
+#toast-message.show {
+    animation: slideInUp 0.5s ease forwards;
+}
