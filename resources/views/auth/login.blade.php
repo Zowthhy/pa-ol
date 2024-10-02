@@ -5,10 +5,10 @@
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
-        <!-- Nombre -->
+        <!-- DNI -->
         <div>
-            <x-input-label for="name" :value="__('Nombre y apellido')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="username" />
+            <x-input-label for="name" :value="__('DNI')" />
+            <x-text-input id="name" class="block mt-1 w-full" type="text" name="dni" :value="old('name')" required autofocus autocomplete="username" />
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 

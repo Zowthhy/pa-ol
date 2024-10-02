@@ -50,12 +50,12 @@
             // Añadir la clase "show" para activar la animación
             setTimeout(() => {
                 toast.classList.add('show');
-            }, 100); // Pequeño retraso para permitir que se aplique el estilo inicial
+            }, 100); // retraso para permitir que se aplique el estilo inicial
 
             // Ocultar el toast después de 3 segundos
             setTimeout(() => {
                 toast.classList.remove('show');
-            }, 3000); // Puedes cambiar los 3000 ms por el tiempo que quieras
+            }, 6000); // tiempo en milisegundos
         }
     });
     </script>

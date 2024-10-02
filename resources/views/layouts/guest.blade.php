@@ -24,7 +24,33 @@
 
             <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
                 {{ $slot }}
+                @if (session('success'))
+                    <div id="toast-message" class="fixed bottom-0 mb-4 mr-4 bg-green-500 text-white p-4 rounded shadow-lg transform transition-all duration-500 translate-y-10 opacity-0">
+                        {{ session('success') }}
+                    </div>
+                @endif
+                @if (session('error'))
+                    <div id="toast-message" class="fixed bottom-0 mb-4 mr-4 bg-red-500 text-white p-4 rounded shadow-lg transform transition-all duration-500 translate-y-10 opacity-0">
+                        {{ session('error') }}
+                    </div>
+                @endif
             </div>
         </div>
     </body>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        const toast = document.getElementById('toast-message');
+        if (toast) {
+            // Añadir la clase "show" para activar la animación
+            setTimeout(() => {
+                toast.classList.add('show');
+            }, 100); // Pequeño retraso para permitir que se aplique el estilo inicial
+
+            // Ocultar el toast después de 3 segundos
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 6000); // tiempo en milisegundos
+        }
+    });
+    </script>
 </html>

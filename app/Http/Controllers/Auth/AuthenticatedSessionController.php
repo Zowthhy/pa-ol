@@ -29,13 +29,12 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
-
         $request->validate([
-            'name' => ['required', 'string'],
+            'dni' => ['required', 'string'],
             'password' => ['required'],
         ]);
     
-        $credentials = $request->only('name', 'password');
+        $credentials = $request->only('dni', 'password');
     
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
@@ -43,7 +42,8 @@ class AuthenticatedSessionController extends Controller
         }
     
         return back()->withErrors([
-            'name' => 'Las credenciales no coinciden con nuestros registros.',
+            'dni' => 'Las credenciales no coinciden con nuestros registros.',
+            'password' => 'Las credenciales no coinciden con nuestros registros.',
         ]);
     }
 
