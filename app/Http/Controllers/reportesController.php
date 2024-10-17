@@ -64,6 +64,9 @@ class reportesController extends Controller
             'id_prestamo' => ['required', 'integer', 'min:1'],
             'descripcion' => ['required', 'string']
         ]);
+
+        $reporte -> update($data);
+
         return to_route('reportes.show', $reporte) -> with('success', 'Reporte actualizado');
     }
 

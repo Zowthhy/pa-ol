@@ -2,7 +2,7 @@
 
         <!-- Barra de búsqueda -->
         <form class="barraBusqueda" action="{{ route('herramientas.index') }}" method="GET">
-            <input type="text" class="barraBusqueda" name="search" placeholder="Buscar por ID o código de barras" value="{{ request('search') }}">
+            <input type="text" class="barraBusqueda" name="search" placeholder="Buscar por código de barras" value="{{ request('search') }}">
             <button type="submit">Buscar</button>
         </form>
         <br>

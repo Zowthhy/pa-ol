@@ -10,9 +10,13 @@ class usuariosController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+
+        $search = $request->input('search');
+
         $usuarios = Usuario::query()
+        ->orWhere('apellido', 'like', "%{$search}%")
         -> orderBy('created_at', 'desc')
         -> paginate(15);;
         return view('usuarios.index', ['usuarios' => $usuarios]);
@@ -31,12 +35,19 @@ class usuariosController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request -> validate([
+        $data = $request->validate([
             'nombre' => ['required', 'string'],
             'apellido' => ['required', 'string'],
-            'email' => ['required', 'string'],
-            'curso' => ['required', 'string']
+            'email' => ['required', 'email', 'unique:usuarios,email'], // Corregido
+            'curso' => ['required', 'string'],
         ]);
+        $email = trim($request->input('email')); // Elimina espacios en blanco alrededor del email
+
+        // Verificamos si el email no es válido
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            // Retorna un mensaje de error si el email no es válido
+            return back()->withErrors(['email' => 'El formato del email no es válido']);
+        }
 
         $usuario = Usuario::create($data);
         return to_route('usuarios.show', $usuario)->with('success', 'Usuario creado');
@@ -66,7 +77,7 @@ class usuariosController extends Controller
         $data = $request -> validate([
             'nombre' => ['required', 'string'],
             'apellido' => ['required', 'string'],
-            'email' => ['required', 'string'],
+            'email' => ['required', 'email'],
             'curso' => ['required', 'string']
         ]);
 
@@ -85,7 +96,7 @@ class usuariosController extends Controller
             $usuario->delete();
     
             // Redirigir con mensaje de éxito
-            return redirect()->route('herramientas.index')->with('success', 'Usuario eliminado correctamente.');
+            return redirect()->route('usuarios.index')->with('success', 'Usuario eliminado correctamente.');
     
         } catch (QueryException $e) {
             // Si ocurre una violación de clave foránea (error 1451)
@@ -98,11 +109,10 @@ class usuariosController extends Controller
             throw $e;
         }
     }
-
     public function buscar(Request $request)
     {
         $search = $request->get('search');
-        $usuarios = Usuario::where('nombre', 'like', "%{$search}%")->limit(10)->get();
+        $usuarios = Usuario::where('nombre',  'like', "%{$search}%")->limit(10)->get();
     
         return response()->json($usuarios);
     }

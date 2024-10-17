@@ -1,8 +1,8 @@
 <x-app-layout>
 
     <!-- Barra de búsqueda -->
-    <form class="barraBusqueda" action="{{ route('prestamos.index') }}" method="GET">
-        <input type="text" class="barraBusqueda" name="search" placeholder="Buscar por ID," value="{{ request('search') }}">
+    <form class="barraBusqueda" action="{{ route('buscar.prestamos') }}" method="GET">
+        <input type="text" class="barraBusqueda" name="search" placeholder="Buscar por apellido del Usuario" value="{{ request('search') }}">
         <button type="submit">Buscar</button>
     </form>
     <br>
@@ -27,9 +27,9 @@
             <tr>
                 <th>{{ Str::words($prestamo -> id)}}</th>
                 <th>{{ Str::words($prestamo -> created_at)}}</th>
-                <th><a href="{{ route('herramientas.show', $prestamo->herramienta->id) }}">{{ $prestamo->herramienta->id }}</a></th>
+                <th><a style="color: rgb(41, 41, 230)" href="{{ route('herramientas.show', $prestamo->herramienta->id) }}">{{ $prestamo->herramienta->id }}</a></th>
                 <th> {{ $prestamo->encargado->name}}</th>
-                <th><a href="{{ route('usuarios.show', $prestamo->usuario->id) }}">{{ $prestamo->usuario->nombre }} {{ $prestamo->usuario->apellido }}</a> </th>
+                <th><a style="color: rgb(41, 41, 230)" href="{{ route('usuarios.show', $prestamo->usuario->id)}}">{{ $prestamo->usuario->nombre }} {{ $prestamo->usuario->apellido }}</a> </th>
                 @if ($prestamo -> devolucion == null)
                     <form action="{{ route('prestamos.devolver', $prestamo) }}" method="POST">
                         @csrf

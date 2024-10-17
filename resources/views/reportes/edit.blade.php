@@ -7,9 +7,9 @@
 
             <div class="form-group">
                 <label for="nombre">Prestamo:</label>
-                <input type="text" name="prestamo" id="nombre" class="form-control" value="{{ $reporte -> id_prestamo }}" required>
+                <input type="text" name="id_prestamo" id="nombre" class="form-control" value="{{ $reporte -> id_prestamo }}" required>
                 <label for="nombre">Descripcion:</label>
-                <textarea name="descripcion" rows="10" class="note-body" value="{{ $reporte -> descripcion }}" required></textarea>
+                <textarea name="descripcion" rows="10" class="note-body" value="{{ Str::words($reporte -> descripcion)}}"  required></textarea>
             </div>
 
             <div class="note-buttons">

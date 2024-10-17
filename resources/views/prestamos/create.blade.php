@@ -9,21 +9,19 @@
             <div class="titulo">
                 <h1>Agregar préstamo</h1>
             </div>
-            <!-- Select2 para herramientas -->
-            <label for="id_herramienta">Herramienta:</label>
-            <select name="id_herramienta" id="id_herramienta" class="select2" required>
-                <option value="">Codigo de barras</option>
-            </select>
 
-            <!-- Select2 para encargados -->
             <label for="id_encargado">Encargado:</label>
             <input type="text" value="{{ Auth::user()->name }}" readonly>
             <input type="text" name="id_encargado" value="{{ Auth::user()->id}}" style="display: none">
+
             <!-- Select2 para usuarios -->
             <label for="id_usuario">Usuario:</label>
             <select name="id_usuario" id="id_usuario" class="select2" required>
                 <option value="">Seleccione un usuario</option>
-            </select> <br>
+            </select> 
+
+            <label for="id_herramienta">Codigo de barras de la herramienta:</label>
+            <input type="text" name="id_herramienta" required> <br>
 
             <div class="note-buttons">
                 <a href="{{ route('prestamos.index')}}" class="cancel">Cancelar</a> <br>

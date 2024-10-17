@@ -12,9 +12,8 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [herramientasController::class, 'index'])
+->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -31,6 +30,7 @@ Route::resource('reportes', reportesController::class);
 
 Route::get('/buscar-herramientas', [herramientasController::class, 'buscar'])->name('buscar.herramientas');
 Route::get('/buscar-usuario', [usuariosController::class, 'buscar'])->name('buscar.usuarios');
+Route::get('/buscar-prestamos', [prestamosController::class, 'buscar'])->name('buscar.prestamos');
 Route::get('/buscar-encargado', [usersController::class, 'buscar'])->name('buscar.encargados');
 
 Route::put('/prestamos/{prestamo}/devolver', [prestamosController::class, 'devolver'])->name('prestamos.devolver');

@@ -2,7 +2,7 @@
 
     <!-- Barra de búsqueda -->
     <form class="barraBusqueda" action="{{ route('usuarios.index') }}" method="GET">
-        <input type="text" class="barraBusqueda" name="search" placeholder="Buscar por nombre, apellido o email" value="{{ request('search') }}">
+        <input type="text" class="barraBusqueda" name="search" placeholder="Buscar por apellido" value="{{ request('search') }}">
         <button type="submit">Buscar</button>
     </form>
     <br>

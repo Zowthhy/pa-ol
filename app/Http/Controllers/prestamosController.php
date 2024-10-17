@@ -11,8 +11,10 @@ class prestamosController extends Controller
     /**
      * Muestra todos los prestamos
      */
-    public function index()
+    public function index(Request $request)
     {
+
+
         $prestamos = Prestamo::query()
         -> orderBy('created_at', 'desc')
         -> paginate(15);;
@@ -107,5 +109,20 @@ class prestamosController extends Controller
         $herramienta->save();
 
         return to_route('prestamos.index')->with('success','La herramienta fue devuelta');
+    }
+    public function buscar(Request $request)
+    {
+
+        $search = $request->get('search');
+        
+        $prestamos = Prestamo::query()
+        ->whereHas('usuario', function($query) use ($search) {
+            $query->where('nombre', 'like', "%{$search}%")
+                  ->orWhere('apellido', 'like', "%{$search}%");
+        })
+        ->orderBy('created_at', 'desc')
+        ->paginate(15);
+    
+        return view('prestamos.index', ['prestamos' => $prestamos]);
     }
 }
