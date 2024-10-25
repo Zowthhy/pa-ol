@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Herramienta;
 use Illuminate\Database\QueryException;
+use App\Rules\CodigoBarrasUnico;
 class herramientasController extends Controller
 {
     /**
@@ -36,21 +37,28 @@ class herramientasController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request -> validate([
+        $data = $request->validate([
             'estado' => ['required', 'string'],
             'disponible' => 'boolean',
             'tipo_herramienta' => ['required', 'string'],
-            'codigo_barras' => ['string', 'nullable']
+            'codigo_barras' => [
+                'string',
+                'nullable',
+                new CodigoBarrasUnico,  // Se usa la regla personalizada aquí
+            ],
         ]);
-
-
-
+    
+        // Si no se provee un código de barras, asigna '0'
         $data['codigo_barras'] = $data['codigo_barras'] ?? '0';
-        
+    
+        // Establecer disponible como verdadero o falso dependiendo de si se envió
         $data['disponible'] = $request->has('disponible');
-
-        $herramienta = Herramienta::create($data);
-        return to_route('herramientas.show', $herramienta)->with('success', 'Herramienta creada');
+    
+        // Crear el registro en la base de datos
+        $herramienta = Herramienta::create($data); 
+    
+        // Redirigir al usuario al detalle de la herramienta creada
+        return to_route('herramientas.show', $herramienta)->with('success', 'Herramienta creada correctamente.');
     }
 
     /**

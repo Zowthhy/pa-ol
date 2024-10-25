@@ -7,6 +7,7 @@ table, tr, th {
 }
 
 table{
+    margin-top: 10px;
     margin-left: 10%;
     width: 80%;
 }
@@ -24,28 +25,24 @@ table{
     background-color: rgb(133, 0, 0);
 }
 
-.barraBusqueda{
-    margin-top: 30px;
-    width: 70%;
-    margin-left: 15%;
-}
-
 .titulo{
     text-align: center;
     font-weight: bolder;
     font-size: 30px;
+    margin-top: 15px;
 }
 
 .agregarBoton{
     height: 40px;
-    width: 300px;
+    width: 70%;
     color: white;
     background-color: rgb(6, 156, 6);
     border: 1px solid black;
-    display: inline-block;
+    display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: 5px;
+    margin-left: 15%;
+    margin-bottom: 25px;
 }
 
 .agregarForm{
@@ -55,9 +52,8 @@ table{
     height: 80vh;
     margin-left: 25%;
     display: flex;
-    justify-content: center;
     flex-direction: column;
-    padding: 25px;
+    padding: 5px;
 }
 
 label{
@@ -87,6 +83,10 @@ label{
     width: 150px;
     height: 40px;
     font-size: larger;
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .devolver{
@@ -112,4 +112,45 @@ label{
 
 #toast-message.show {
     animation: slideInUp 0.5s ease forwards;
+}
+
+.barraBusqueda {
+    margin-top: 10%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 600px; /* Limita el ancho máximo */
+    border: 1px solid #dfe1e5;
+    border-radius: 24px; /* Bordes redondeados */
+    padding: 10px;
+    box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28); /* Sombra sutil */
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+/* Input de búsqueda estilo Google */
+.inputBusqueda {
+    flex: 1; /* Hace que el input ocupe el mayor espacio */
+    border: none; /* Sin bordes */
+    outline: none; /* Elimina el borde cuando se hace clic */
+    padding: 10px;
+    font-size: 16px;
+    color: #202124;
+    background-color: transparent;
+}
+
+.botonBusqueda {
+    background-color: transparent;
+    border: none;
+    color: #4285f4; 
+    font-size: 16px;
+    cursor: pointer;
+    padding: 0 16px;
+    transition: color 0.3s ease-in-out;
+}
+
+.botonBusqueda:hover {
+    color: #0b66c3;
 }

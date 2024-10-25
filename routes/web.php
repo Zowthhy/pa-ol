@@ -21,6 +21,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/prestamos/sin-devolucion', [prestamosController::class, 'indexSinDevolucion'])->name('prestamos.sin-devolucion');
 Route::get('/prestamos/crearSinCB', [prestamosController::class, 'crearSinCB'])->name('prestamos.crearSinCB');
 
 Route::resource('herramientas', herramientasController::class);

@@ -1,12 +1,14 @@
 <x-app-layout>
 
-    <!-- Barra de búsqueda -->
-    <form class="barraBusqueda" action="{{ route('reportes.index') }}" method="GET">
-        <input type="text" class="barraBusqueda" name="search" placeholder="Buscar por ID," value="{{ request('search') }}">
-        <button type="submit">Buscar</button>
-    </form>
     <br>
     <a href="{{ route('reportes.create') }}" class="agregarBoton"><p>+ Agregar reporte</p></a>
+
+     <!-- Barra de búsqueda -->
+    <form class="barraBusqueda" action="{{ route('reportes.index') }}" method="GET">
+        <input type="text" class="inputBusqueda" name="search" placeholder="Buscar por ID del prestamo" value="{{ request('search') }}">
+        <button type="submit" class="botonBusqueda">Buscar</button>
+    </form>
+
     <div class="reportes">
         <h1 class="titulo">Reportes</h1>
         <table class="reportesTable">
@@ -20,7 +22,7 @@
         <div class="reporte">
             <tr>
                 <th>{{ Str::words($reporte -> id)}}</th>
-                <th>{{ Str::words($reporte -> id_prestamo)}}</th>
+                <th><a style="color: rgb(41, 41, 230)" href="{{ route('prestamos.show', $reporte->id_prestamo) }}">{{ $reporte->id_prestamo }}</a></th>
                 <th>{{ Str::words($reporte -> descripcion)}}</th>
                 <div class="buttons">
                 <th class="show-button"><a href="{{ route('reportes.show', $reporte) }}">Ver</a></th>

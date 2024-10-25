@@ -1,25 +1,28 @@
 <x-app-layout>
 
     <!-- Barra de búsqueda -->
-    <form class="barraBusqueda" action="{{ route('buscar.prestamos') }}" method="GET">
-        <input type="text" class="barraBusqueda" name="search" placeholder="Buscar por apellido del Usuario" value="{{ request('search') }}">
-        <button type="submit">Buscar</button>
-    </form>
+
     <br>
     <a href="{{ route('prestamos.create') }}" class="agregarBoton"><p>+ Agregar prestamo con codigo de barras</p></a><br>
     <a href="{{ route('prestamos.crearSinCB') }}" class="agregarBoton">
         <p>+ Agregar préstamo con ID</p>
     </a>
+
+    <form class="barraBusqueda" action="{{ route('buscar.prestamos') }}" method="GET">
+        <input type="text" class="inputBusqueda" name="search" placeholder="Buscar por apellido del Usuario" value="{{ request('search') }}">
+        <button type="submit" class="botonBusqueda">Buscar</button>
+    </form>
+
     <div class="prestamos">
         <h1 class="titulo">Prestamos</h1>
         <table class="prestamosTable">
             <tr>
                 <th>ID prestamo</th>
-                <th>Prestado el</th>
+                <th><a style="color: rgb(41, 41, 230)" href="{{ route('prestamos.index') }}" title="Ordenar prestamos por la fecha de creacion" class="btn btn-primary">Prestado el</a></th>
                 <th>ID Herramienta</th>
                 <th>Encargado</th>
                 <th>Usuario</th>
-                <th>Devolucion</th>
+                <th><a style="color: rgb(41, 41, 230)" href="{{ route('prestamos.sin-devolucion') }}" title="Mostrar solo prestamos no devueltos" class="btn btn-primary">Devolución</a></th>
                 <th colspan="4">Opciones</th>
             </tr>
         @foreach ($prestamos as $prestamo)

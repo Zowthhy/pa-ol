@@ -1,23 +1,18 @@
 <x-app-layout>
-    <div class="note-container single-note">
-        <div class="note-header">
-            <h1 class="text-3x1 py-4">prestamo creado el:  {{ $prestamo -> created_at}}</h1>
-            <div class="note-buttons">
-                <a href="{{ route('prestamos.edit', $prestamo)}}" class="note-edit-button">Editar</a>
-                <form action="{{ route('prestamos.destroy', $prestamo) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button class="note-delete-button">borrar</button>
-                </form>
-            </div>
-        </div>
-        <div class="note">
-            <div class="note-body">
-                {{ Str::words($prestamo -> id_herramienta)}}
-                {{ Str::words($prestamo -> id_encargado)}}
-                {{ Str::words($prestamo -> id_usuario)}}
-                {{ Str::words($prestamo -> devolucion)}}
-            </div>
-        </div>
+    <div class="agregarForm">
+        <h1>prestamo creado el:  {{ $prestamo -> created_at}}</h1>
+        <a href="{{ route('prestamos.edit', $prestamo)}}" class="submit">Editar</a>
+        <form action="{{ route('prestamos.destroy', $prestamo) }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <button class="cancel">borrar</button>
+        </form>
+
+        <label for="reporte">Herramienta:</label>
+        {{ Str::words($prestamo -> id_herramienta)}}
+        <label for="reporte">Encargado:</label>
+        {{ Str::words($prestamo -> id_encargado)}}
+        <label for="reporte">Usuario:</label>
+        <a style="color: rgb(41, 41, 230)" href="{{ route('usuarios.show', $prestamo->usuario->id)}}">{{ $prestamo->usuario->nombre }} {{ $prestamo->usuario->apellido }}</a>
     </div>
 </x-app-layout>

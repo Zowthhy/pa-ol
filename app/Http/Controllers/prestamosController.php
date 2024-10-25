@@ -21,6 +21,14 @@ class prestamosController extends Controller
         return view('prestamos.index', ['prestamos' => $prestamos]);
     }
 
+    public function indexSinDevolucion()
+    {
+        // Filtrar donde 'devolucion' es null
+        $prestamos = Prestamo::whereNull('devolucion')
+        -> paginate(15);
+        return view('prestamos.index', ['prestamos' => $prestamos]);
+    }
+
     /**
      * Muestra el formulario para agregar un prestamo
      */

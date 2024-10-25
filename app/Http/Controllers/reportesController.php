@@ -9,9 +9,12 @@ class reportesController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        $search = $request->input('search');
+
         $reportes = Reporte::query()
+        ->orWhere('id_prestamo', 'like', "%{$search}%")
         -> orderBy('created_at', 'desc')
         -> paginate(15);;
         return view('reportes.index', ['reportes' => $reportes]);

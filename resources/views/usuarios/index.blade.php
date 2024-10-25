@@ -1,12 +1,14 @@
 <x-app-layout>
 
-    <!-- Barra de búsqueda -->
-    <form class="barraBusqueda" action="{{ route('usuarios.index') }}" method="GET">
-        <input type="text" class="barraBusqueda" name="search" placeholder="Buscar por apellido" value="{{ request('search') }}">
-        <button type="submit">Buscar</button>
-    </form>
     <br>
     <a href="{{ route('usuarios.create') }}" class="agregarBoton"><p>+ Agregar usuario</p></a>
+
+     <!-- Barra de búsqueda -->
+     <form class="barraBusqueda" action="{{ route('usuarios.index') }}" method="GET">
+        <input type="text" class="inputBusqueda" name="search" placeholder="Buscar por apellido del Usuario" value="{{ request('search') }}">
+        <button type="submit" class="botonBusqueda">Buscar</button>
+    </form>
+
     <div class="usuarios">
         <h1 class="titulo">Usuarios</h1>
         <table class="usuariosTable">

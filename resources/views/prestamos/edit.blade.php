@@ -1,11 +1,10 @@
 <x-app-layout>
 
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
+    <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/select2.min.js') }}"></script>
 
     <div class="note-container single-note">
-        <h1 class="text-3x1 py-4">Editar prestamo</h1>
         <form action=" {{ route('prestamos.update', $prestamo)}}" method="POST" class="agregarForm">
             @csrf
             @method('PUT')
@@ -33,8 +32,8 @@
                 <input type="text" name="curso" id="curso" class="form-control" value="{{ $prestamo -> devolucion }}" required>
 
             <div class="note-buttons">
-                <a href="{{ route('prestamos.index')}}" class="note-cancel-button">Cancelar</a>
-                <button class="note-submit-button">Confirmar</button>
+                <a href="{{ route('prestamos.index')}}" class="cancel">Cancelar</a>
+                <button class="submit">Confirmar</button>
             </div>
         </form>
     </div>

@@ -1,20 +1,17 @@
+
 <x-app-layout>
     <div class="note-container single-note">
-        <h1 class="text-3x1 py-4">Editar reporte</h1>
-        <form action=" {{ route('reportes.update', $reporte)}}" method="POST" class="note">
+        <form action=" {{ route('reportes.update', $reporte)}}" method="POST" class="agregarForm">
             @csrf
             @method('PUT')
-
-            <div class="form-group">
-                <label for="nombre">Prestamo:</label>
-                <input type="text" name="id_prestamo" id="nombre" class="form-control" value="{{ $reporte -> id_prestamo }}" required>
-                <label for="nombre">Descripcion:</label>
-                <textarea name="descripcion" rows="10" class="note-body" value="{{ Str::words($reporte -> descripcion)}}"  required></textarea>
-            </div>
-
+            <div class="titulo"><h1>Editar reporte</h1></div>
+            <label for="id_prestamo">Id prestamo:</label>
+            <input type="text" name="id_prestamo" id="nombre" class="form-control" value="{{ $reporte -> id_prestamo }}" required>
+            <label for="reporte">Reporte:</label>
+            <textarea name="descripcion" rows="10" class="note-body" value="{{ Str::words($reporte -> descripcion)}}"  required></textarea>
             <div class="note-buttons">
-                <a href="{{ route('reportes.index')}}" class="note-cancel-button">Cancelar</a>
-                <button class="note-submit-button">Confirmar</button>
+                <a href="{{ route('reportes.index')}}" class="cancel">Cancelar</a> <br>
+                <button class="submit">Agregar</button>
             </div>
         </form>
     </div>

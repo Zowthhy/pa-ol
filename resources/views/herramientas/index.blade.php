@@ -1,12 +1,14 @@
 <x-app-layout>
 
-        <!-- Barra de búsqueda -->
-        <form class="barraBusqueda" action="{{ route('herramientas.index') }}" method="GET">
-            <input type="text" class="barraBusqueda" name="search" placeholder="Buscar por código de barras" value="{{ request('search') }}">
-            <button type="submit">Buscar</button>
-        </form>
         <br>
         <a href="{{ route('herramientas.create') }}" class="agregarBoton"><p>+ Agregar Herramienta</p></a>
+
+        <!-- Barra de búsqueda -->
+        <form class="barraBusqueda" action="{{ route('herramientas.index') }}" method="GET">
+            <input type="text" class="inputBusqueda" name="search" placeholder="Buscar por codigo de barras" value="{{ request('search') }}">
+            <button type="submit" class="botonBusqueda">Buscar</button>
+        </form>
+
         <div class="herramientas">
             <h1 class="titulo">Herramientas</h1>
             <table class="herramientasTable">
