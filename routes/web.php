@@ -23,6 +23,7 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/prestamos/sin-devolucion', [prestamosController::class, 'indexSinDevolucion'])->name('prestamos.sin-devolucion');
 Route::get('/prestamos/crearSinCB', [prestamosController::class, 'crearSinCB'])->name('prestamos.crearSinCB');
+Route::post('/prestamos/storeSinCB', [prestamosController::class, 'storeSinCB'])->name('prestamos.storeSinCB');
 
 Route::resource('herramientas', herramientasController::class);
 Route::resource('usuarios', usuariosController::class);

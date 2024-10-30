@@ -1,6 +1,5 @@
 <x-app-layout>
 
-        <br>
         <a href="{{ route('herramientas.create') }}" class="agregarBoton"><p>+ Agregar Herramienta</p></a>
 
         <!-- Barra de búsqueda -->

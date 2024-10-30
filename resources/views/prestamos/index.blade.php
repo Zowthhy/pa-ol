@@ -2,7 +2,6 @@
 
     <!-- Barra de búsqueda -->
 
-    <br>
     <a href="{{ route('prestamos.create') }}" class="agregarBoton"><p>+ Agregar prestamo con codigo de barras</p></a><br>
     <a href="{{ route('prestamos.crearSinCB') }}" class="agregarBoton">
         <p>+ Agregar préstamo con ID</p>

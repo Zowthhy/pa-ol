@@ -1,6 +1,5 @@
 <x-app-layout>
 
-    <br>
     <a href="{{ route('reportes.create') }}" class="agregarBoton"><p>+ Agregar reporte</p></a>
 
      <!-- Barra de búsqueda -->

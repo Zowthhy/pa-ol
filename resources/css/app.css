@@ -34,15 +34,14 @@ table{
 
 .agregarBoton{
     height: 40px;
-    width: 70%;
+    width: 100%;
     color: white;
     background-color: rgb(6, 156, 6);
     border: 1px solid black;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: 15%;
-    margin-bottom: 25px;
+    margin-top: 5px;
 }
 
 .agregarForm{
@@ -115,7 +114,6 @@ label{
 }
 
 .barraBusqueda {
-    margin-top: 10%;
     background-color: white;
     display: flex;
     justify-content: center;
@@ -128,6 +126,7 @@ label{
     padding: 10px;
     box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28); /* Sombra sutil */
     transition: box-shadow 0.3s ease-in-out;
+    margin-top: 25px;
 }
 
 /* Input de búsqueda estilo Google */

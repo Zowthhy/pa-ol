@@ -53,6 +53,28 @@ class prestamosController extends Controller
             'id_usuario' => ['required', 'integer', 'min:1']
         ]);
 
+        $herramienta = Herramienta::where('codigo_barras', $data['id_herramienta'])->first();
+        // Verificar si la herramienta está disponible
+        if ($herramienta && $herramienta->disponible == 1) {
+            // Cambiar el estado de disponibilidad a 0 (no disponible)
+            $data['id_herramienta'] = $herramienta->id;
+            $herramienta->disponible = 0;
+            $herramienta->save();
+            $prestamo = Prestamo::create($data);
+            return to_route('prestamos.show', $prestamo)->with('success', 'Prestamo creado');
+        } else {
+            return back()->with('error', 'La herramienta no está disponible.');
+        }
+    }
+
+    public function storeSinCB(Request $request)
+    {
+        $data = $request -> validate([
+            'id_herramienta' => ['required', 'integer', 'min:1'],
+            'id_encargado' => ['required', 'integer', 'min:1'],
+            'id_usuario' => ['required', 'integer', 'min:1']
+        ]);
+
         $herramienta = Herramienta::find($data['id_herramienta']);
         // Verificar si la herramienta está disponible
         if ($herramienta && $herramienta->disponible == 1) {
@@ -65,7 +87,6 @@ class prestamosController extends Controller
             return back()->with('error', 'La herramienta no está disponible.');
         }
     }
-
     /**
      * Display the specified resource.
      */

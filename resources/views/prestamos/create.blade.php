@@ -21,8 +21,8 @@
                 <option value="">Seleccione un usuario</option>
             </select> 
 
-            <label for="id_herramienta">Codigo de barras de la herramienta:</label>
-            <input type="text" name="id_herramienta" required> <br>
+            <label for="cb">Codigo de barras de la herramienta:</label>
+            <input type="number" name="id_herramienta" required> <br>
 
             <div class="note-buttons">
                 <a href="{{ route('prestamos.index')}}" class="cancel">Cancelar</a> <br>

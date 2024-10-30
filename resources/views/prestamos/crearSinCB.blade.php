@@ -4,7 +4,7 @@
     <script src="{{ asset('js/select2.min.js') }}"></script>
 
     <div class="note-container single-note">
-        <form action="{{ route('prestamos.store') }}" method="POST" class="agregarForm">
+        <form action="{{ route('prestamos.storeSinCB') }}" method="POST" class="agregarForm">
             @csrf
             <div class="titulo">
                 <h1>Agregar préstamo</h1>
