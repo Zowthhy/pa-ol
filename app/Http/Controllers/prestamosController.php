@@ -92,7 +92,8 @@ class prestamosController extends Controller
      */
     public function show(Prestamo $prestamo)
     {
-        return view('prestamos.show', ['prestamo' => $prestamo]);
+        $prestamo = prestamo::with('reportes')->find($prestamo -> id); // Usa el ID del usuario que deseas mostrar
+        return view('prestamos.show', compact('prestamo'));
     }
 
     /**

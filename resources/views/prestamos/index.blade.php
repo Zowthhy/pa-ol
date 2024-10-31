@@ -22,7 +22,7 @@
                 <th>Encargado</th>
                 <th>Usuario</th>
                 <th><a style="color: rgb(41, 41, 230)" href="{{ route('prestamos.sin-devolucion') }}" title="Mostrar solo prestamos no devueltos" class="btn btn-primary">Devolución</a></th>
-                <th colspan="4">Opciones</th>
+                <th colspan="5">Opciones</th>
             </tr>
         @foreach ($prestamos as $prestamo)
         <div class="prestamo">
@@ -50,6 +50,8 @@
                         @method('DELETE')
                         <th class="delete-button"><button>Borrar</button></th> 
                     </form>
+                <th class="reporte-button">
+                     <a href="{{ url('/reportes/create/' . $prestamo -> id) }}">Reporte</a>
             </tr>
         </div>
         @endforeach

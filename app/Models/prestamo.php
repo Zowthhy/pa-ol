@@ -25,4 +25,8 @@ public function usuario()
 {
     return $this->belongsTo(Usuario::class, 'id_usuario');
 }
+public function reportes()
+{
+    return $this->hasMany(Reporte::class, 'id_prestamo'); 
+}
 }

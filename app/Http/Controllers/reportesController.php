@@ -23,10 +23,11 @@ class reportesController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create($id_prestamo)
     {
-        return view('reportes.create');
+        return view('reportes.create', compact('id_prestamo'));
     }
+    
 
     /**
      * Store a newly created resource in storage.
@@ -78,8 +79,9 @@ class reportesController extends Controller
      */
     public function destroy(Reporte $reporte)
     {
+        $id_prestamo = $reporte -> id_prestamo;
         $reporte -> delete();
 
-        return to_route('reportes.show', $reporte) -> with('success', 'Reporte eliminado');
+        return to_route('prestamos.show', $id_prestamo) -> with('success', 'Reporte eliminado');
     }
 }

@@ -44,6 +44,11 @@ table{
     margin-top: 5px;
 }
 
+.reporte-button{
+    color: white;
+    background-color: rgb(118, 167, 37);
+}
+
 .agregarForm{
     margin-top: 25px;
     border: 1px solid black;

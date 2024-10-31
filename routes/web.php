@@ -29,6 +29,7 @@ Route::resource('herramientas', herramientasController::class);
 Route::resource('usuarios', usuariosController::class);
 Route::resource('prestamos', prestamosController::class);
 Route::resource('reportes', reportesController::class);
+Route::get('/reportes/create/{id_prestamo}', [reportesController::class, 'create'])->name('reportes.create');
 
 Route::get('/buscar-herramientas', [herramientasController::class, 'buscar'])->name('buscar.herramientas');
 Route::get('/buscar-usuario', [usuariosController::class, 'buscar'])->name('buscar.usuarios');
