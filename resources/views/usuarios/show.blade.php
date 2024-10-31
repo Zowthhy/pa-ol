@@ -16,6 +16,12 @@
                     {{ Str::words($usuario -> email)}}
                     <label for="">Curso:</label>
                     {{ Str::words($usuario -> curso)}}
-
+                    <br>
+                    <h2>Préstamos: </h2>
+                    <ul>
+                        @foreach($usuario->prestamos as $prestamo)
+                            <li><a href="{{ route('prestamos.show', $prestamo)}}" style="color: rgb(41, 41, 230)">{{ $prestamo->created_at }}</a></li>           
+                        @endforeach
+                    </ul>
     </div>
 </x-app-layout>

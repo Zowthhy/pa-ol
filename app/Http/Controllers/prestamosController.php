@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Prestamo;
 use App\Models\Herramienta;
-
+use Illuminate\Database\QueryException;
 class prestamosController extends Controller
 {
     /**
@@ -123,8 +123,24 @@ class prestamosController extends Controller
      */
     public function destroy(Prestamo $prestamo)
     {
-        $prestamo -> delete();
-        return to_route('prestamos.index')->with('success','El prestamo fue eliminado');
+        
+        try {
+            // Intentar eliminar la herramienta
+            $prestamo->delete();
+    
+            // Redirigir con mensaje de éxito
+            return redirect()->route('prestamos.index')->with('success', 'Prestamo eliminado correctamente.');
+    
+        } catch (QueryException $e) {
+            // Si ocurre una violación de clave foránea (error 1451)
+            if ($e->getCode() == 23000) {
+                // Redirigir con un mensaje de error amigable
+                return redirect()->route('prestamos.index')->with('error', 'No se puede eliminar al prestamo porque está asociado a un reporte.');
+            }
+    
+            // Si es otro error, puedes manejarlo de manera diferente o volver a lanzarlo
+            throw $e;
+        }
     }
 
     public function devolver(Prestamo $prestamo)

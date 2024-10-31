@@ -37,30 +37,39 @@ class herramientasController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'estado' => ['required', 'string'],
-            'disponible' => 'boolean',
-            'tipo_herramienta' => ['required', 'string'],
-            'codigo_barras' => [
-                'string',
-                'nullable',
-                new CodigoBarrasUnico,  // Se usa la regla personalizada aquí
-            ],
-        ]);
+        try {
+            $data = $request->validate([
+                'estado' => ['required', 'string'],
+                'disponible' => 'boolean',
+                'tipo_herramienta' => ['required', 'string'],
+                'codigo_barras' => [
+                    'string',
+                    'nullable',
+                    new CodigoBarrasUnico,  // Se usa la regla personalizada aquí
+                ],
+            ]);
     
-        // Si no se provee un código de barras, asigna '0'
-        $data['codigo_barras'] = $data['codigo_barras'] ?? '0';
+            // Si no se provee un código de barras, asigna '0'
+            $data['codigo_barras'] = $data['codigo_barras'] ?? '0';
     
-        // Establecer disponible como verdadero o falso dependiendo de si se envió
-        $data['disponible'] = $request->has('disponible');
+            // Establecer disponible como verdadero o falso dependiendo de si se envió
+            $data['disponible'] = $request->has('disponible');
     
-        // Crear el registro en la base de datos
-        $herramienta = Herramienta::create($data); 
+            // Crear el registro en la base de datos
+            $herramienta = Herramienta::create($data);
     
-        // Redirigir al usuario al detalle de la herramienta creada
-        return to_route('herramientas.show', $herramienta)->with('success', 'Herramienta creada correctamente.');
+            // Redirigir al usuario al detalle de la herramienta creada
+            return to_route('herramientas.show', $herramienta)->with('success', 'Herramienta creada correctamente.');
+    
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            // Verifica si el error es específico del código de barras duplicado
+            if ($e->validator->errors()->has('codigo_barras')) {
+                return to_route('herramientas.create')->with('error', 'Código de barras en uso.');
+            }
+    
+            throw $e; // Lanza de nuevo la excepción si es otro error de validación
+        }
     }
-
     /**
      * Display the specified resource.
      */

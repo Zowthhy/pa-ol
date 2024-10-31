@@ -58,7 +58,8 @@ class usuariosController extends Controller
      */
     public function show(Usuario $usuario)
     {
-        return view('usuarios.show', ['usuario' => $usuario]);
+        $usuario = usuario::with('prestamos')->find($usuario -> id); // Usa el ID del usuario que deseas mostrar
+        return view('usuarios.show', compact('usuario'));
     }
 
     /**

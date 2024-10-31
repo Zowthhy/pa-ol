@@ -16,4 +16,9 @@ class usuario extends Model
     return $this->nombre . ' ' . $this->apellido;
 }
 
+public function prestamos()
+{
+    return $this->hasMany(Prestamo::class, 'id_usuario'); 
+}
+
 }
