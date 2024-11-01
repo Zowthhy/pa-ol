@@ -4,7 +4,7 @@
             <h1 class="text-3x1 py-4">Herramienta creada el:  {{ $herramienta -> created_at}}</h1>
             <div class="note-buttons">
                 <a href="{{ route('herramientas.edit', $herramienta)}}" class="edit-button">Editar</a>
-                <form action="{{ route('herramientas.destroy', $herramienta) }}" method="POST">
+                <form action="{{ route('herramientas.destroy', $herramienta) }}" method="POST" onsubmit="return confirmDelete();">
                     @csrf
                     @method('DELETE')
                     <button class="delete-button">borrar</button>
@@ -31,4 +31,10 @@
             </table>
 
     </div>
+
+    <script>
+        function confirmDelete() {
+            return confirm('¿Estás seguro de que deseas eliminar esta Herramienta?');
+        }
+    </script>
 </x-app-layout>

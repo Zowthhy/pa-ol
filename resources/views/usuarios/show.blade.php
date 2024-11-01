@@ -2,7 +2,7 @@
     <div class="agregarForm">
             <h1 class="text-3x1 py-4">usuario creado el:  {{ $usuario -> created_at}}</h1>
                 <a href="{{ route('usuarios.edit', $usuario)}}" class="submit">Editar</a>
-                <form action="{{ route('usuarios.destroy', $usuario) }}" method="POST">
+                <form action="{{ route('usuarios.destroy', $usuario) }}" method="POST" onsubmit="return confirmDelete();">
                     @csrf
                     @method('DELETE')
                     <button class="cancel">borrar</button>
@@ -24,4 +24,10 @@
                         @endforeach
                     </ul>
     </div>
+
+    <script>
+        function confirmDelete() {
+            return confirm('¿Estás seguro de que deseas eliminar este Usuario?');
+        }
+    </script>
 </x-app-layout>

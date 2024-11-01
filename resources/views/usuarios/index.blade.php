@@ -30,7 +30,7 @@
                 <div class="buttons">
                 <th class="show-button"><a href="{{ route('usuarios.show', $usuario) }}">Ver</a></th>
                 <th class="edit-button"><a href="{{ route('usuarios.edit', $usuario) }}">Editar</a></th>
-                <form action="{{ route('usuarios.destroy', $usuario) }}" method="POST">
+                <form action="{{ route('usuarios.destroy', $usuario) }}" method="POST" onsubmit="return confirmDelete();">
                         @csrf
                         @method('DELETE')
                         <th class="delete-button"><button>Borrar</button></th> 
@@ -41,4 +41,10 @@
     </div>
 
     {{ $usuarios->links() }}
+
+    <script>
+        function confirmDelete() {
+            return confirm('¿Estás seguro de que deseas eliminar este Usuario?');
+        }
+    </script>
 </x-app-layout>

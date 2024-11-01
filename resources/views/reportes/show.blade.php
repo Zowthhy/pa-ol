@@ -2,7 +2,7 @@
     <div class="agregarForm">
         <h1 class="text-3x1 py-4">reporte creado el:  {{ $reporte -> created_at}}</h1>
         <a href="{{ route('reportes.edit', $reporte)}}" class="submit">Editar</a>
-        <form action="{{ route('reportes.destroy', $reporte) }}" method="POST">
+        <form action="{{ route('reportes.destroy', $reporte) }}" method="POST" onsubmit="return confirmDelete();">
             @csrf
             @method('DELETE')
             <button class="cancel">borrar</button>
@@ -13,4 +13,10 @@
         <label for="reporte">Reporte:</label>
         {{ Str::words($reporte -> descripcion)}}
     </div>
+
+    <script>
+        function confirmDelete() {
+            return confirm('¿Estás seguro de que deseas eliminar este Reporte?');
+        }
+    </script>
 </x-app-layout>

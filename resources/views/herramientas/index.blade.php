@@ -34,7 +34,7 @@
                     <div class="buttons">
                     <th class="show-button"><a href="{{ route('herramientas.show', $herramienta) }}">Ver</a></th>
                     <th class="edit-button"><a href="{{ route('herramientas.edit', $herramienta) }}">Editar</a></th>
-                    <form action="{{ route('herramientas.destroy', $herramienta) }}" method="POST">
+                    <form action="{{ route('herramientas.destroy', $herramienta) }}" method="POST" onsubmit="return confirmDelete();">
                             @csrf
                             @method('DELETE')
                             <th class="delete-button"><button>Borrar</button></th> 
@@ -45,4 +45,10 @@
         </div>
 
         {{ $herramientas->links() }}
+
+        <script>
+        function confirmDelete() {
+            return confirm('¿Estás seguro de que deseas eliminar esta Herramienta?');
+        }
+    </script>
 </x-app-layout>

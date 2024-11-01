@@ -2,10 +2,11 @@
     <div class="agregarForm">
         <h1>Prestamo creado el:  {{ $prestamo -> created_at}}</h1>
         <a href="{{ route('prestamos.edit', $prestamo)}}" class="submit">Editar</a>
-        <form action="{{ route('prestamos.destroy', $prestamo) }}" method="POST">
+
+        <form action="{{ route('prestamos.destroy', $prestamo) }}" method="POST" onsubmit="return confirmDelete();">
             @csrf
             @method('DELETE')
-            <button class="cancel">Borrar</button>
+            <button class="cancel">borrar</button>
         </form>
         <a class="submit" href="{{ url('/reportes/create/' . $prestamo -> id) }}">Reporte</a>
 
@@ -23,4 +24,10 @@
              @endforeach
          </ul>
     </div>
+
+    <script>
+        function confirmDelete() {
+            return confirm('¿Estás seguro de que deseas eliminar este préstamo?');
+        }
+    </script>
 </x-app-layout>
