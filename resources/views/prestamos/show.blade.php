@@ -1,11 +1,11 @@
 <x-app-layout>
     <div class="agregarForm">
-        <h1>prestamo creado el:  {{ $prestamo -> created_at}}</h1>
+        <h1>Prestamo creado el:  {{ $prestamo -> created_at}}</h1>
         <a href="{{ route('prestamos.edit', $prestamo)}}" class="submit">Editar</a>
         <form action="{{ route('prestamos.destroy', $prestamo) }}" method="POST">
             @csrf
             @method('DELETE')
-            <button class="cancel">borrar</button>
+            <button class="cancel">Borrar</button>
         </form>
         <a class="submit" href="{{ url('/reportes/create/' . $prestamo -> id) }}">Reporte</a>
 
