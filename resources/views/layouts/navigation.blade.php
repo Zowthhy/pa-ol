@@ -1,3 +1,4 @@
+
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
     <!-- Primary Navigation Menu -->
     <div class="mx-10  lg:px-8">
@@ -6,11 +7,11 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('herramientas.index') }}">
-                        <img src="{{ asset('images/chacalogo.jpg') }}" alt="logo" class="h-12">
+                        <img src="{{ asset('images/chacalogo.jpg') }}" alt="logo" class="h-12 m-4">
                     </a>
                 </div>
                 <div class="shrink-0 flex items-center">
-                    Pañol chacabuco
+                    Pañol   E.E.S.T. N°6
                 </div>
 
                 <!-- Links de navegacion -->

@@ -113,7 +113,7 @@ class usuariosController extends Controller
     public function buscar(Request $request)
     {
         $search = $request->get('search');
-        $usuarios = Usuario::where('nombre',  'like', "%{$search}%")->limit(10)->get();
+        $usuarios = Usuario::where('nombre',  'like', "%{$search}%")->limit(5)->get();
     
         return response()->json($usuarios);
     }

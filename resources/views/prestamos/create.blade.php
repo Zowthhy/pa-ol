@@ -33,62 +33,12 @@
 
     <script>
         $(document).ready(function() {
-            // Inicializar Select2 para herramientas
-            $('#id_herramienta').select2({
-                ajax: {
-                    url: '{{ route('buscar.herramientas') }}',
-                    dataType: 'json',
-                    delay: 250,
-                    data: function (params) {
-                        return {
-                            search: params.term // término de búsqueda
-                        };
-                    },
-                    processResults: function (data) {
-                        return {
-                            results: $.map(data, function (item) {
-                                return {
-                                    id: item.id,
-                                    text: item.codigo_barras
-                                };
-                            })
-                        };
-                    },
-                    cache: true
-                }
-            });
-
-            // Inicializar Select2 para encargados
-            $('#id_encargado').select2({
-                ajax: {
-                    url: '{{ route('buscar.encargados') }}',
-                    dataType: 'json',
-                    delay: 250,
-                    data: function (params) {
-                        return {
-                            search: params.term
-                        };
-                    },
-                    processResults: function (data) {
-                        return {
-                            results: $.map(data, function (item) {
-                                return {
-                                    id: item.id,
-                                    text: item.name
-                                };
-                            })
-                        };
-                    },
-                    cache: true
-                }
-            });
-
             // Inicializar Select2 para usuarios
             $('#id_usuario').select2({
                 ajax: {
                     url: '{{ route('buscar.usuarios') }}',
                     dataType: 'json',
-                    delay: 250,
+                    delay: 500,
                     data: function (params) {
                         return {
                             search: params.term
@@ -105,6 +55,21 @@
                         };
                     },
                     cache: true
+                },
+                minimumInputLength: 3,
+                language: {
+                    inputTooShort: function () {
+                        return "Por favor ingrese 3 o más caracteres"; 
+                    },
+                    loadingMore: function () {
+                        return "Cargando más resultados...";
+                    },
+                    noResults: function () {
+                        return "No se encontraron resultados";
+                    },
+                    searching: function () {
+                        return "Buscando...";
+                    }
                 }
             });
         });

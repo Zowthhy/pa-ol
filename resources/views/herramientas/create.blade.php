@@ -7,7 +7,7 @@
 
             @csrf
             <label>Estado de la herramienta:</label>
-            <input type="text" name="estado" placeholder="estado de la herramienta"  required>
+            <input type="text" name="estado" placeholder="Condición de la herramienta"  required>
             <label>tipo de herramienta:</label>
             <input type="text" name="tipo_herramienta" placeholder="tipo de herramienta"  required> 
             <label>Codigo de barras:</label>
